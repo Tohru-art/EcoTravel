@@ -265,6 +265,14 @@ header.sticky{
     border: 1px solid #4e5055;
 }
 
+.search{
+    background-color: greenyellow;
+    background-size: cover;
+    background-position: center;
+    color: gray;
+    border-radius: 5px;
+}
+
 /* RESPONSIVE DESIGN */
 @media (max-width: 1700px){
     header{
