@@ -196,7 +196,7 @@ header.sticky{
 /* ABOUT US DESIGN*/
 .about-text h5{
     color: #59ff43;
-    font-size: 50px;
+    font-size: 40px;
     text-decoration: underline;
 }
 
@@ -345,6 +345,9 @@ header.sticky{
     }
     .home{
         height: 85vh;
+    }
+    .about-text h5{
+        font-size: 30px;
     }
 }
 
