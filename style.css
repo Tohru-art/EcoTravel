@@ -266,11 +266,13 @@ header.sticky{
 }
 
 .search{
-    background-color: greenyellow;
-    background-size: cover;
-    background-position: center;
-    color: gray;
-    border-radius: 5px;
+    display: grid;
+    align-items: center;
+    gap: 2rem;
+}
+
+#gen_btn{
+    margin-left: 95px;
 }
 
 /* RESPONSIVE DESIGN */
