@@ -111,6 +111,12 @@ section{
     padding: 70px
 }
 
+header.sticky{
+    padding: 8px 17%;
+    background: transparent;
+    backdrop-filter: blur(35px);
+}
+
 .header-text h3{
     text-align: center;
     color: var(--text-color);
