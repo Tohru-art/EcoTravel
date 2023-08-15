@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maps</title>
+    
+    <!-- Links to other files -->
     <script src="script.js"></script>
+    <script src="main.js"></script>
     <link rel="stylesheet" href="../style.css">
 
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- API library link -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0v7P-wNLoK0qeXbEXHOsE2Fht8ZIbtqs&callback=myMap"></script>
 
+    <!-- ICON / fonts library-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 
     <!--Google fonts link-->
@@ -26,7 +32,7 @@
 
         <ul class="navbar">
             <li><a href="../index.html">Home</a></li>
-            <li><a href="../#How it works">Our Mission</a></li>
+            <li><a href="../mission/mission.html">Our Mission</a></li>
             <li><a href="../#About us">About us</a></li>
             <li><a href="maps.html" class="active">Maps</a></li>
         </ul>
@@ -58,6 +64,21 @@
             <button id="gen_btn">Click Me</button>
         </div>
     </section>
+
+    <div id="map" class="map" style="width:900px;height:800px;"></div>
+
+    <script>
+        function myMap() {
+        var mapProp= {
+          center:new google.maps.LatLng(40.785091,-73.968285),
+          zoom:10,
+        };
+        var map = new google.maps.Map(document.getElementById("map"),mapProp);
+        }
+        </script>
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0v7P-wNLoK0qeXbEXHOsE2Fht8ZIbtqs&callback=myMap"></script>
+    </script>
 
 </body>
 </html>

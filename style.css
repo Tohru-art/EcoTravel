@@ -275,6 +275,17 @@ header.sticky{
     margin-left: 95px;
 }
 
+#map{
+    border: 2px solid var(--main-color);
+    padding: 30px;
+    border-radius: 5px;
+    margin-left: 500px;
+} 
+
+
+
+
+
 /* RESPONSIVE DESIGN */
 @media (max-width: 1700px){
     header{
