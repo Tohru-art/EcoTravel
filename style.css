@@ -265,6 +265,36 @@ header.sticky{
     border: 1px solid #4e5055;
 }
 
+/* css for every button display  & MAPS UI DESIGN */
+.search{
+    display: grid;
+    align-items: center;
+    gap: 2rem;
+}
+
+.gen_btn{
+    padding: 5px 10px;
+    margin-left: 60px;
+    background: var(--main-color);
+    color: var(--bg-color);
+    font-size: 20px;
+    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: 5px;
+}
+
+.gen_btn:hover{
+    border: 2px solid #fff;
+    background: transparent;
+    color: var(--text-color);
+}
+/*************/
+
+
+
+
+
+
 /* RESPONSIVE DESIGN */
 @media (max-width: 1700px){
     header{

@@ -4,10 +4,11 @@ window.addEventListener("scroll", function() {
     header.classList.toggle("sticky", window.scrollY > 60)
 });
 
-let menu = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
+document.addEventListener('DOMContentLoaded', function () {
+    const menuIcon = document.getElementById('menu-icon');
+    const navbar = document.getElementById('navbar');
 
-menu.onlcick = () => {
-    menu.classList.toggle('bx-x');
-    navbar.classList.toggle('open');
-};
+    menuIcon.addEventListener('click', function () {
+        navbar.classList.toggle('active');
+    });
+});
