@@ -111,6 +111,12 @@ section{
     padding: 70px
 }
 
+header.sticky{
+    padding: 8px 17%;
+    background: transparent;
+    backdrop-filter: blur(35px);
+}
+
 .header-text h3{
     text-align: center;
     color: var(--text-color);
@@ -265,11 +271,14 @@ header.sticky{
     border: 1px solid #4e5055;
 }
 
+
+/* css for every button display  & MAPS UI DESIGN */
 .search{
     display: grid;
     align-items: center;
     gap: 2rem;
 }
+
 
 #gen_btn{
     margin-left: 95px;
@@ -281,6 +290,25 @@ header.sticky{
     border-radius: 5px;
     margin-left: 500px;
 } 
+/*
+.gen_btn{
+    padding: 5px 10px;
+    margin-left: 60px;
+    background: var(--main-color);
+    color: var(--bg-color);
+    font-size: 20px;
+    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: 5px;
+}
+
+.gen_btn:hover{
+    border: 2px solid #fff;
+    background: transparent;
+    color: var(--text-color);
+}
+/*************/
+
 
 
 
