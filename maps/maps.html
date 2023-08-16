@@ -43,14 +43,14 @@
         </div>
     </header>
 
-    <section class="home" id="home">
+    <section class="home" id="flex">
         <div class="home-text">
             <h5>Start Location</h5>
            
             <form class="search">
                 <label for="start"></label>
 
-                <input type="text" placeholder="Type here"> 
+                <input type="text" placeholder="Current Location"> 
             </form>
 
             <h5>Destination</h5>
@@ -62,12 +62,15 @@
             </form>
             <br><br>
             <button id="gen_btn">Click Me</button>
+
+            
         </div>
+        <div id="map" class="map" style="width:1200px;height:800px;margin-bottom:300px;"></div>
     </section>
 
-    <div id="map" class="map" style="width:900px;height:800px;"></div>
+    
 
-    <script>
+    <script id="googleMap">
         function myMap() {
         var mapProp= {
           center:new google.maps.LatLng(40.785091,-73.968285),
@@ -79,6 +82,8 @@
         
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0v7P-wNLoK0qeXbEXHOsE2Fht8ZIbtqs&callback=myMap"></script>
     </script>
+
+    <h1 id="result"></h1>
 
 </body>
 </html>

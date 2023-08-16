@@ -272,18 +272,22 @@ header.sticky{
 }
 
 #gen_btn{
-    margin-left: 95px;
+    margin-left: 70px;
 }
 
 #map{
     border: 2px solid var(--main-color);
     padding: 30px;
+    align-items: flex-start;
     border-radius: 5px;
-    margin-left: 500px;
+    margin-left: 200px;
+    margin-top: 310px;
 } 
 
-
-
+#logo{
+    width: 500px;
+    height: auto;
+}
 
 
 /* RESPONSIVE DESIGN */
