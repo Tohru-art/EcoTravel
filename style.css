@@ -295,9 +295,26 @@ header.sticky{
     height: auto;
 }
 
-/* #result{
+#output{
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    /* margin-left: 45px; */
+    padding: 50px;
+    color: var(--text-color);
+    border: 2px solid transparent;
+    border-radius: 10px;
+}
 
-} */
+#result_img{
+    text-decoration: none;
+    width: 500px;
+    height: auto;
+}
+
+#result{
+    margin-top: 125px;
+}
 
 
 /* RESPONSIVE DESIGN */

@@ -6,8 +6,8 @@
     <title>Maps</title>
     
     <!-- Links to other files -->
-    <script src="script.js"></script>
-    <script src="main.js"></script>
+    <script src="script.js" defer></script>
+    <script src="main.js" defer></script>
     <link rel="stylesheet" href="../style.css">
 
     <!-- API library link -->
@@ -83,8 +83,10 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0v7P-wNLoK0qeXbEXHOsE2Fht8ZIbtqs&callback=myMap"></script>
     </script>
 
-    <h1 id="result"></h1>
-    <img id="result_img">
+    <div id="output">
+        <h1 id="result"></h1>
+        <img id="result_img">
+    </div>
 
 </body>
 </html>
