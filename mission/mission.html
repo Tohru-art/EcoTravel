@@ -225,7 +225,7 @@
     <!-- ===== CONTENT ===== -->
     <div class="mission-content">
 
-        <div class="mission-block">
+        <div class="mission-block reveal">
             <div class="mission-block-icon"><i class="ri-earth-line"></i></div>
             <div class="mission-block-body">
                 <h2>Why Eco Travel?</h2>
@@ -234,7 +234,7 @@
             </div>
         </div>
 
-        <div class="mission-block">
+        <div class="mission-block reveal reveal-d1">
             <div class="mission-block-icon"><i class="ri-alert-line"></i></div>
             <div class="mission-block-body">
                 <h2>The Problem</h2>
@@ -246,7 +246,7 @@
             </div>
         </div>
 
-        <div class="mission-block">
+        <div class="mission-block reveal reveal-d2">
             <div class="mission-block-icon"><i class="ri-lightbulb-line"></i></div>
             <div class="mission-block-body">
                 <h2>Our Approach</h2>
@@ -281,16 +281,16 @@
 
     <!-- ===== IMPACT STATS ===== -->
     <section class="mission-impact">
-        <div class="m-stat">
-            <span class="m-number">37%</span>
+        <div class="m-stat reveal">
+            <span class="m-number" data-target="37" data-suffix="%">37%</span>
             <span class="m-label">of global CO₂ comes from transport</span>
         </div>
-        <div class="m-stat">
-            <span class="m-number">6×</span>
+        <div class="m-stat reveal reveal-d1">
+            <span class="m-number" data-target="6" data-suffix="×">6×</span>
             <span class="m-label">lower emissions on buses vs cars</span>
         </div>
-        <div class="m-stat">
-            <span class="m-number">0g</span>
+        <div class="m-stat reveal reveal-d2">
+            <span class="m-number" data-target="0" data-suffix="g">0g</span>
             <span class="m-label">CO₂ per km when walking or cycling</span>
         </div>
     </section>
@@ -313,6 +313,10 @@
             &copy; 2025 EcoTravel &mdash; A student project.
         </div>
     </footer>
+
+    <button id="scroll-top" aria-label="Back to top">
+        <i class="ri-arrow-up-line"></i>
+    </button>
 
 </body>
 </html>

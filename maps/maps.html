@@ -8,6 +8,8 @@
     <script src="../script.js" defer></script>
     <link rel="stylesheet" href="../style.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <style>
         /* ── Calculator page scoped styles ── */
@@ -272,6 +274,74 @@
             text-align: center;
         }
 
+        /* Leaflet map */
+        .map-wrapper {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-glass);
+            height: 240px;
+        }
+        #route-map { height: 100%; width: 100%; }
+
+        /* Leaflet custom markers */
+        .eco-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid #0a0f0a;
+        }
+        .eco-dot--start { background: #59ff43; box-shadow: 0 0 8px rgba(89,255,67,0.7); }
+        .eco-dot--end   { background: #f87171; box-shadow: 0 0 8px rgba(248,113,113,0.7); }
+
+        /* Annual impact card */
+        .annual-card {
+            padding: 1.5rem;
+            background: rgba(89,255,67,0.05);
+            border: 1px solid rgba(89,255,67,0.2);
+            border-radius: var(--radius-md);
+            font-size: var(--fs-small);
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-family: var(--font-body);
+        }
+        .annual-card .annual-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: var(--fs-small);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+        .annual-card .annual-title i { color: var(--accent); }
+        .annual-card strong {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        /* Impractical mode tag */
+        .impractical-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            border: 1px solid var(--text-muted);
+            border-radius: var(--radius-pill);
+            padding: 2px 8px;
+            margin-right: auto;
+        }
+
+        /* Spinner */
+        @keyframes ri-spin {
+            to { transform: rotate(360deg); }
+        }
+        .ri-spin { display: inline-block; animation: ri-spin 0.75s linear infinite; }
+
         /* Responsive */
         @media (max-width: 900px) {
             .calculator {
@@ -284,6 +354,7 @@
 
         @media (max-width: 600px) {
             .calc-hero h1 { font-size: 2.6rem; }
+            .map-wrapper  { height: 200px; }
         }
     </style>
 </head>
@@ -341,8 +412,12 @@
                 <span class="dist-num" id="distance-value">--</span>
                 <small>km straight-line distance</small>
             </div>
+            <div class="map-wrapper">
+                <div id="route-map"></div>
+            </div>
             <div class="transport-grid" id="transport-grid"></div>
             <div class="recommendation" id="recommendation"></div>
+            <div class="annual-card" id="annual-impact"></div>
         </div>
 
     </div>
@@ -367,6 +442,10 @@
             &copy; 2025 EcoTravel &mdash; A student project.
         </div>
     </footer>
+
+    <button id="scroll-top" aria-label="Back to top">
+        <i class="ri-arrow-up-line"></i>
+    </button>
 
     <script src="main.js"></script>
 </body>

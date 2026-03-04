@@ -47,25 +47,25 @@
 
     <!-- ===== HOME / INTRO ===== -->
     <section class="home" id="home">
-        <div class="home-text">
+        <div class="home-text reveal">
             <h5>Protect Our Planet</h5>
             <h1>Travel<br><span>greener.</span></h1>
             <p>EcoTravel's calculator analyzes your journey and shows you exactly how much CO₂ each transport mode produces — walking, cycling, bus, or car — so you can make an informed, planet-friendly choice.</p>
         </div>
 
-        <div class="stats-panel">
+        <div class="stats-panel reveal reveal-d1">
             <div class="stat-item">
-                <span class="stat-number">37%</span>
+                <span class="stat-number" data-target="37" data-suffix="%">37%</span>
                 <span class="stat-label">of global CO₂ emissions come from transportation</span>
             </div>
             <div class="stat-divider"></div>
             <div class="stat-item">
-                <span class="stat-number">14×</span>
+                <span class="stat-number" data-target="14" data-suffix="×">14×</span>
                 <span class="stat-label">more emissions per km by car vs cycling</span>
             </div>
             <div class="stat-divider"></div>
             <div class="stat-item">
-                <span class="stat-number">0g</span>
+                <span class="stat-number" data-target="0" data-suffix="g">0g</span>
                 <span class="stat-label">CO₂ produced per km when walking or cycling</span>
             </div>
         </div>
@@ -93,15 +93,43 @@
         </div>
     </section>
 
+    <!-- ===== HOW IT WORKS ===== -->
+    <section id="how-it-works">
+        <div class="section-lead reveal">
+            <h2>How it <span>Works</span></h2>
+            <p>Three simple steps to understand the environmental cost of any journey.</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card reveal reveal-d1">
+                <span class="step-num">01</span>
+                <div class="step-icon"><i class="ri-map-pin-line"></i></div>
+                <h3>Enter Locations</h3>
+                <p>Type any two places — a street address, landmark, or city. We use OpenStreetMap to find them instantly.</p>
+            </div>
+            <div class="step-card reveal reveal-d2">
+                <span class="step-num">02</span>
+                <div class="step-icon"><i class="ri-bar-chart-line"></i></div>
+                <h3>See the Numbers</h3>
+                <p>We calculate the distance and compute exact CO₂ emissions for walking, cycling, train, bus, and car.</p>
+            </div>
+            <div class="step-card reveal reveal-d3">
+                <span class="step-num">03</span>
+                <div class="step-icon"><i class="ri-leaf-line"></i></div>
+                <h3>Make Your Choice</h3>
+                <p>Pick the option that fits your life and the planet. Every green trip compounds over time.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== ABOUT US ===== -->
     <section id="about">
-        <div class="about-header">
+        <div class="about-header reveal">
             <h2>Meet the <span>Team</span></h2>
             <p>Four students passionate about sustainability and technology, building tools for a greener future.</p>
         </div>
 
         <div class="role-item">
-            <div class="role-box">
+            <div class="role-box reveal reveal-d1">
                 <div class="role-icon-wrap"><i class="ri-computer-line"></i></div>
                 <h3>Will Garlens Pierre</h3>
                 <span class="role-title">Front-End Developer</span>
@@ -110,7 +138,7 @@
                 </a>
             </div>
 
-            <div class="role-box">
+            <div class="role-box reveal reveal-d2">
                 <div class="role-icon-wrap"><i class="ri-code-box-line"></i></div>
                 <h3>Matthew DeLaCruz</h3>
                 <span class="role-title">Back-End Developer</span>
@@ -119,7 +147,7 @@
                 </a>
             </div>
 
-            <div class="role-box">
+            <div class="role-box reveal reveal-d3">
                 <div class="role-icon-wrap"><i class="ri-pencil-ruler-line"></i></div>
                 <h3>Andrew Henry</h3>
                 <span class="role-title">Wireframe Designer</span>
@@ -128,7 +156,7 @@
                 </span>
             </div>
 
-            <div class="role-box">
+            <div class="role-box reveal reveal-d4">
                 <div class="role-icon-wrap"><i class="ri-slideshow-line"></i></div>
                 <h3>Carlos Giron</h3>
                 <span class="role-title">Content Creator</span>
@@ -137,6 +165,15 @@
                 </span>
             </div>
         </div>
+    </section>
+
+    <!-- ===== CTA STRIP ===== -->
+    <section id="cta-strip">
+        <h2 class="reveal">Ready to <span>measure your impact?</span></h2>
+        <p class="reveal reveal-d1">Enter any two locations and see your CO₂ options side by side — in seconds, for free.</p>
+        <a href="maps/maps.html" class="btn-primary reveal reveal-d2">
+            <i class="ri-leaf-line"></i> Open the Calculator
+        </a>
     </section>
 
     <!-- ===== FOOTER ===== -->
@@ -157,6 +194,11 @@
             &copy; 2025 EcoTravel &mdash; A student project.
         </div>
     </footer>
+
+    <!-- ===== SCROLL TO TOP ===== -->
+    <button id="scroll-top" aria-label="Back to top">
+        <i class="ri-arrow-up-line"></i>
+    </button>
 
 </body>
 </html>
