@@ -3,90 +3,371 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maps</title>
-    
-    <!-- Links to other files -->
-    <script src="script.js" defer></script>
-    <script src="main.js" defer></script>
+    <title>Calculator — EcoTravel</title>
+
+    <script src="../script.js" defer></script>
     <link rel="stylesheet" href="../style.css">
-
-    <!-- API library link -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0v7P-wNLoK0qeXbEXHOsE2Fht8ZIbtqs&callback=myMap"></script>
-
-    <!-- ICON / fonts library-->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 
-    <!--Google fonts link-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
-    
+    <style>
+        /* ── Calculator page scoped styles ── */
+        .calc-hero {
+            padding: 130px 8% 50px;
+            background: linear-gradient(135deg, var(--bg-primary) 55%, rgba(89,255,67,0.04) 100%);
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .calc-hero .eyebrow {
+            font-size: var(--fs-small);
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-family: var(--font-body);
+        }
+
+        .calc-hero h1 {
+            font-size: var(--fs-hero);
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+        }
+
+        .calc-hero p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 520px;
+        }
+
+        .calculator {
+            padding: 60px 8% 80px;
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        /* Form card */
+        .calc-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 90px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .calc-card h2 {
+            font-size: var(--fs-h3);
+            font-weight: 700;
+            margin-bottom: 1.75rem;
+            color: var(--text-primary);
+        }
+
+        .input-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: var(--fs-small);
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 6px;
+            font-family: var(--font-body);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: var(--fs-body);
+            transition: border-color 0.25s;
+        }
+
+        .input-group input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .input-group input:focus {
+            border-color: var(--accent);
+        }
+
+        #calc-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent);
+            color: #000;
+            font-family: var(--font-body);
+            font-size: var(--fs-body);
+            font-weight: 700;
+            border-radius: var(--radius-pill);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 0.5rem;
+        }
+
+        #calc-btn:hover {
+            background: #6fff55;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+
+        #calc-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .error-msg {
+            color: #f87171;
+            font-size: var(--fs-small);
+            margin-top: 10px;
+            min-height: 1.2em;
+            font-family: var(--font-body);
+        }
+
+        /* Results panel */
+        .results-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .results-panel.hidden { display: none; }
+
+        .distance-display {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(8px);
+        }
+
+        .distance-display .dist-num {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .distance-display small {
+            display: block;
+            font-size: var(--fs-small);
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .transport-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .transport-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 1.25rem 1.5rem;
+            backdrop-filter: blur(8px);
+            transition: var(--transition);
+        }
+
+        .transport-card:hover {
+            border-color: rgba(89, 255, 67, 0.25);
+        }
+
+        .transport-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .transport-header i { font-size: 1.4rem; }
+        .transport-header strong {
+            flex: 1;
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+        }
+
+        .co2-badge {
+            font-size: var(--fs-small);
+            font-weight: 700;
+            font-family: var(--font-body);
+        }
+
+        .progress-track {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+            height: 6px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 6px;
+            border-radius: 4px;
+            transition: width 0.7s ease;
+        }
+
+        .transport-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: var(--fs-small);
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+        }
+
+        .recommendation {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 1.5rem;
+            background: rgba(89, 255, 67, 0.07);
+            border: 1px solid rgba(89, 255, 67, 0.25);
+            border-radius: var(--radius-md);
+        }
+
+        .recommendation i {
+            font-size: 1.5rem;
+            color: var(--accent);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .recommendation strong {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .recommendation p {
+            font-size: var(--fs-small);
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Disclaimer */
+        .calc-note {
+            padding: 0 8% 40px;
+            font-size: var(--fs-small);
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .calculator {
+                grid-template-columns: 1fr;
+                padding: 40px 5% 60px;
+            }
+            .calc-card { position: static; }
+            .calc-hero { padding: 120px 5% 40px; }
+        }
+
+        @media (max-width: 600px) {
+            .calc-hero h1 { font-size: 2.6rem; }
+        }
+    </style>
 </head>
 <body>
-    
-    
+
+    <!-- ===== HEADER ===== -->
     <header class="sticky">
-        <a href="../index.html" class="logo">ECO<span>Travel</span></a>
+        <a href="../index.html" class="logo"><span>ECO</span>Travel</a>
 
         <ul class="navbar">
             <li><a href="../index.html">Home</a></li>
             <li><a href="../mission/mission.html">Our Mission</a></li>
-            <li><a href="../#About us">About us</a></li>
-            <li><a href="maps.html" class="active">Maps</a></li>
+            <li><a href="../index.html#about">About Us</a></li>
+            <li><a href="maps.html" class="active">Calculator</a></li>
         </ul>
 
         <div class="icon">
-            <a href=""><i class="ri-instagram-line"></i></a>
-            <div class="bx bx-menu" id="menu-icon"></div>
+            <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+            <i class="ri-menu-line" id="menu-icon"></i>
         </div>
     </header>
 
-    <section class="home" id="flex">
-        <div class="home-text">
-            <h5>Start Location</h5>
-           
-            <form class="search">
-                <label for="start"></label>
-
-                <input type="text" placeholder="Current Location"> 
-            </form>
-
-            <h5>Destination</h5>
-
-            <form class="search">
-                <label for="start"></label>
-
-                <input type="text" placeholder="Type here"> 
-            </form>
-            <br><br>
-            <button id="gen_btn">Click Me</button>
-
-            
-        </div>
-        <div id="map" class="map" style="width:1200px;height:800px;margin-bottom:300px;"></div>
+    <!-- ===== HERO ===== -->
+    <section class="calc-hero">
+        <p class="eyebrow">Eco Calculator</p>
+        <h1>Your Trip <span>Emissions</span></h1>
+        <p>Enter any two locations to see the CO₂ cost of each transport mode and find the greenest option for your journey.</p>
     </section>
 
-    
+    <!-- ===== CALCULATOR ===== -->
+    <div class="calculator">
 
-    <script id="googleMap">
-        function myMap() {
-        var mapProp= {
-          center:new google.maps.LatLng(40.785091,-73.968285),
-          zoom:10,
-        };
-        var map = new google.maps.Map(document.getElementById("map"),mapProp);
-        }
-        </script>
-        
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0v7P-wNLoK0qeXbEXHOsE2Fht8ZIbtqs&callback=myMap"></script>
-    </script>
+        <!-- Form -->
+        <div class="calc-card">
+            <h2>Plan Your Journey</h2>
+            <form id="calc-form" autocomplete="off">
+                <div class="input-group">
+                    <label for="start">Start Location</label>
+                    <input type="text" id="start" placeholder="e.g. Times Square, New York">
+                </div>
+                <div class="input-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" id="destination" placeholder="e.g. Central Park, New York">
+                </div>
+                <button type="submit" id="calc-btn">
+                    <i class="ri-leaf-line"></i> Calculate Emissions
+                </button>
+                <p id="calc-error" class="error-msg" aria-live="polite"></p>
+            </form>
+        </div>
 
-    <div id="output">
-        <h1 id="result"></h1>
-        <img id="result_img">
+        <!-- Results -->
+        <div id="results" class="results-panel hidden" aria-live="polite">
+            <div class="distance-display">
+                <span class="dist-num" id="distance-value">--</span>
+                <small>km straight-line distance</small>
+            </div>
+            <div class="transport-grid" id="transport-grid"></div>
+            <div class="recommendation" id="recommendation"></div>
+        </div>
+
     </div>
 
+    <p class="calc-note">Distances are straight-line (as the crow flies). Emissions data sourced from IPCC transport studies. Your location data is never sent to any server.</p>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo"><span>ECO</span>Travel</a>
+                <p>Sustainable travel starts with a single step.</p>
+            </div>
+            <nav class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="../mission/mission.html">Our Mission</a>
+                <a href="../index.html#about">About Us</a>
+                <a href="maps.html">Calculator</a>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 EcoTravel &mdash; A student project.
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>

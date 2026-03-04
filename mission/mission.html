@@ -3,49 +3,316 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Mission</title>
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="../style.css">
+    <title>Our Mission — EcoTravel</title>
 
+    <script src="../script.js" defer></script>
+    <link rel="stylesheet" href="../style.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <style>
+        /* ── Mission page scoped styles ── */
+        .mission-hero {
+            min-height: 55vh;
+            display: flex;
+            align-items: center;
+            padding: 130px 8% 60px;
+            background: linear-gradient(135deg, var(--bg-primary) 55%, rgba(89,255,67,0.04) 100%);
+            border-bottom: 1px solid var(--border-glass);
+        }
 
-    <!--Google fonts link-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+        .mission-hero-text .eyebrow {
+            font-size: var(--fs-small);
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-family: var(--font-body);
+        }
+
+        .mission-hero-text h1 {
+            font-size: var(--fs-hero);
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+        }
+
+        .mission-hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 580px;
+            line-height: 1.75;
+        }
+
+        .mission-content {
+            padding: 80px 8%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .mission-block {
+            display: grid;
+            grid-template-columns: 64px 1fr;
+            gap: 2rem;
+            padding: 2.5rem;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: var(--transition);
+        }
+
+        .mission-block:hover {
+            border-color: rgba(89, 255, 67, 0.3);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .mission-block-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--accent-glow);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .mission-block-icon i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .mission-block-body h2 {
+            font-size: var(--fs-h3);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .mission-block-body p {
+            font-size: var(--fs-body);
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .mission-block-body p:last-child { margin-bottom: 0; }
+
+        .callout-stat {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-glow);
+            border: 1px solid rgba(89,255,67,0.25);
+            border-radius: var(--radius-md);
+            padding: 12px 18px;
+            margin: 0.5rem 0 1rem;
+            font-size: var(--fs-small);
+            color: var(--text-primary);
+        }
+
+        .callout-stat strong { color: var(--accent); font-size: 1.1rem; }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: var(--fs-small);
+            color: var(--text-secondary);
+        }
+
+        .feature-item i {
+            color: var(--accent);
+            font-size: 1rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .mission-cta {
+            padding: 0 8% 80px;
+            text-align: center;
+        }
+
+        .mission-cta h2 {
+            font-size: var(--fs-h2);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .mission-cta p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: var(--fs-body);
+        }
+
+        .mission-impact {
+            padding: 60px 8%;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-glass);
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .m-stat {
+            text-align: center;
+        }
+
+        .m-stat .m-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+        }
+
+        .m-stat .m-label {
+            font-size: var(--fs-small);
+            color: var(--text-secondary);
+            max-width: 160px;
+        }
+
+        @media (max-width: 700px) {
+            .mission-block {
+                grid-template-columns: 1fr;
+            }
+            .mission-impact { gap: 2rem; }
+            .mission-cta { padding: 0 5% 60px; }
+            .mission-content { padding: 60px 5%; }
+            .mission-hero { padding: 120px 5% 50px; }
+        }
+    </style>
 </head>
 <body>
-    
+
+    <!-- ===== HEADER ===== -->
     <header class="sticky">
-        <a href="index.html" class="logo">ECO<span>Travel</span></a>
+        <a href="../index.html" class="logo"><span>ECO</span>Travel</a>
 
         <ul class="navbar">
             <li><a href="../index.html">Home</a></li>
             <li><a href="mission.html" class="active">Our Mission</a></li>
-            <li><a href="../#About us">About us</a></li>
-            <li><a href="../maps/maps.html">Maps</a></li>
+            <li><a href="../index.html#about">About Us</a></li>
+            <li><a href="../maps/maps.html">Calculator</a></li>
         </ul>
 
         <div class="icon">
-            <a href=""><i class="ri-instagram-line"></i></a>
-            <div class="bx bx-menu" id="menu-icon"></div>
+            <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+            <i class="ri-menu-line" id="menu-icon"></i>
         </div>
-
     </header>
 
-    <!--Our mission-->
-
-    <section class="home" id="home">
-        <div class="home-text">
-            <h5>About</h5>
-            <h1> OUR MISSION <br></h1>
-            <p>"Input.."</p>
+    <!-- ===== HERO ===== -->
+    <section class="mission-hero">
+        <div class="mission-hero-text">
+            <p class="eyebrow">Why We Exist</p>
+            <h1>Our <span>Mission</span></h1>
+            <p>We believe that sustainable travel starts with awareness. EcoTravel gives you the data to make every journey a conscious choice for the planet.</p>
         </div>
     </section>
 
+    <!-- ===== CONTENT ===== -->
+    <div class="mission-content">
+
+        <div class="mission-block">
+            <div class="mission-block-icon"><i class="ri-earth-line"></i></div>
+            <div class="mission-block-body">
+                <h2>Why Eco Travel?</h2>
+                <p>Transportation is the largest single contributor to greenhouse gas emissions in developed nations. Every journey is a choice — and small choices, made consistently by millions of people, reshape the planet.</p>
+                <p>When we choose to walk, cycle, or take transit instead of driving, we don't just reduce our personal footprint. We shift cultural norms, reduce urban congestion, and contribute to a liveable future for generations after us.</p>
+            </div>
+        </div>
+
+        <div class="mission-block">
+            <div class="mission-block-icon"><i class="ri-alert-line"></i></div>
+            <div class="mission-block-body">
+                <h2>The Problem</h2>
+                <div class="callout-stat">
+                    <strong>171g</strong> of CO₂ emitted per kilometer by the average car
+                </div>
+                <p>A single round-trip drive of 20 km produces the same emissions as charging a smartphone more than 1,500 times. When public transit, cycling, or walking can serve the same trip, the environmental case is overwhelming.</p>
+                <p>The challenge isn't a lack of alternatives — it's a lack of visibility into the true cost of each choice. Most people have no idea how much CO₂ their commute produces, and that invisibility makes change harder.</p>
+            </div>
+        </div>
+
+        <div class="mission-block">
+            <div class="mission-block-icon"><i class="ri-lightbulb-line"></i></div>
+            <div class="mission-block-body">
+                <h2>Our Approach</h2>
+                <p>EcoTravel's calculator uses real emissions data to show you, for any journey, exactly how much CO₂ each transport mode produces. No guessing. No greenwashing. Just numbers.</p>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="ri-check-line"></i>
+                        <span>Transparent data — emissions figures sourced from IPCC transport studies</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="ri-check-line"></i>
+                        <span>Privacy first — fully client-side, your location data never leaves your browser</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="ri-check-line"></i>
+                        <span>All modes compared — walking, cycling, bus, and car side by side</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== CTA ===== -->
+    <section class="mission-cta">
+        <h2>Ready to measure <span>your impact?</span></h2>
+        <p>Enter any two locations and see your options instantly.</p>
+        <a href="../maps/maps.html" class="btn-primary">
+            <i class="ri-leaf-line"></i> Calculate Trip Emissions
+        </a>
+    </section>
+
+    <!-- ===== IMPACT STATS ===== -->
+    <section class="mission-impact">
+        <div class="m-stat">
+            <span class="m-number">37%</span>
+            <span class="m-label">of global CO₂ comes from transport</span>
+        </div>
+        <div class="m-stat">
+            <span class="m-number">6×</span>
+            <span class="m-label">lower emissions on buses vs cars</span>
+        </div>
+        <div class="m-stat">
+            <span class="m-number">0g</span>
+            <span class="m-label">CO₂ per km when walking or cycling</span>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo"><span>ECO</span>Travel</a>
+                <p>Sustainable travel starts with a single step.</p>
+            </div>
+            <nav class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="mission.html">Our Mission</a>
+                <a href="../index.html#about">About Us</a>
+                <a href="../maps/maps.html">Calculator</a>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 EcoTravel &mdash; A student project.
+        </div>
+    </footer>
 
 </body>
 </html>

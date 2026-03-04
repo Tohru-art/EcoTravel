@@ -1,102 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <title>EcoTravel — Sustainable Journey Planner</title>
 
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
-
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-
-    <!--Google fonts link-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
 </head>
 <body>
 
-    <header class="sticky">
-        <a href="index.html" class="logo">ECO<span>Travel</span></a>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <a href="index.html" class="logo"><span>ECO</span>Travel</a>
 
         <ul class="navbar">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="mission/mission.html">Our Mission</a></li>
-            <li><a href="#About us">About us</a></li>
-            <li><a href="maps/maps.html">Maps</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="maps/maps.html">Calculator</a></li>
         </ul>
 
         <div class="icon">
-            <a href=""><i class="ri-instagram-line"></i></a>
-            <div class="bx bx-menu" id="menu-icon"></div>
+            <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+            <i class="ri-menu-line" id="menu-icon"></i>
         </div>
-
     </header>
 
-    <!--Home section style.css-->
-
+    <!-- ===== HERO ===== -->
     <section id="banner">
         <div class="banner-text">
-            <a href="#home" class="name">ECO<span>Travel</span></a>
-            <!-- <img id = logo src="images/logo.png.png"> -->
-            <p>Let's make our planet healthier for the next generation.</p>
+            <p class="eyebrow">Sustainable Travel</p>
+            <h1>Let's make our planet<br><span>healthier</span></h1>
+            <p class="subtitle">Transportation is responsible for 37% of global CO₂ emissions. Every journey is a choice — make yours count.</p>
+            <div class="banner-btns">
+                <a href="maps/maps.html" class="btn-primary">
+                    <i class="ri-leaf-line"></i> Calculate Your Impact
+                </a>
+                <a href="mission/mission.html" class="btn-ghost">
+                    <i class="ri-arrow-right-line"></i> Our Mission
+                </a>
+            </div>
         </div>
     </section>
 
-
+    <!-- ===== HOME / INTRO ===== -->
     <section class="home" id="home">
         <div class="home-text">
-            <h5>Let's</h5>
-            <h1>Protect our planet <br></h1>
-            <p>"Embark on a journey of sustainability with EcoTravel, your trusted companion for making planet-friendly travel decisions. Seamlessly integrating technology and environmental consciousness, our advanced algorithm analyzes your travel distance, transportation preferences, and ecological impact, crafting well-informed recommendations that resonate with your values. Discover a new way to explore the world while reducing your carbon footprint - join us and navigate a future of responsible travel."</p>
+            <h5>Protect Our Planet</h5>
+            <h1>Travel<br><span>greener.</span></h1>
+            <p>EcoTravel's calculator analyzes your journey and shows you exactly how much CO₂ each transport mode produces — walking, cycling, bus, or car — so you can make an informed, planet-friendly choice.</p>
+        </div>
+
+        <div class="stats-panel">
+            <div class="stat-item">
+                <span class="stat-number">37%</span>
+                <span class="stat-label">of global CO₂ emissions come from transportation</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number">14×</span>
+                <span class="stat-label">more emissions per km by car vs cycling</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number">0g</span>
+                <span class="stat-label">CO₂ produced per km when walking or cycling</span>
+            </div>
         </div>
     </section>
 
+    <!-- ===== IMPACT STRIP ===== -->
+    <section id="impact">
+        <div class="impact-inner">
+            <div class="impact-pill">
+                <i class="ri-bus-line"></i>
+                Buses emit 6× less CO₂ per passenger than cars
+            </div>
+            <div class="impact-pill">
+                <i class="ri-bike-line"></i>
+                Cycling produces zero direct emissions
+            </div>
+            <div class="impact-pill">
+                <i class="ri-car-line"></i>
+                1 km by car emits ~171g of CO₂
+            </div>
+            <div class="impact-pill">
+                <i class="ri-walk-line"></i>
+                Walking is always the greenest option
+            </div>
+        </div>
+    </section>
 
-    <!--About us section-->
-    <section class="About us" id="About us">
-        <div class="about-text">
-            <h5>ABOUT US</h5>
+    <!-- ===== ABOUT US ===== -->
+    <section id="about">
+        <div class="about-header">
+            <h2>Meet the <span>Team</span></h2>
+            <p>Four students passionate about sustainability and technology, building tools for a greener future.</p>
         </div>
 
         <div class="role-item">
             <div class="role-box">
-                <i class="ri-computer-line"></i>
-                <h3>Front-End Developer: Web Designer / Developer</h3>
-                <p>WILL - GARLENS PIERRE</p>
-                <a href="https://github.com/Tohru-art" target="https://github.com/Tohru-art" class="s-btnn">GITHUB</a>
+                <div class="role-icon-wrap"><i class="ri-computer-line"></i></div>
+                <h3>Will Garlens Pierre</h3>
+                <span class="role-title">Front-End Developer</span>
+                <a href="https://github.com/Tohru-art" target="_blank" class="s-btnn">
+                    <i class="ri-github-line"></i> GitHub
+                </a>
             </div>
 
             <div class="role-box">
-                <i class="ri-code-box-line"></i>
-                <h3>Back-End Developer: Responsible for the API / Web Developer</h3>
-                <p>Matthew DeLaCruz</p>
-                <a href="https://github.com/MatthewASC23" target="_blank" class="s-btnn">GITHUB</a>
+                <div class="role-icon-wrap"><i class="ri-code-box-line"></i></div>
+                <h3>Matthew DeLaCruz</h3>
+                <span class="role-title">Back-End Developer</span>
+                <a href="https://github.com/MatthewASC23" target="_blank" class="s-btnn">
+                    <i class="ri-github-line"></i> GitHub
+                </a>
             </div>
 
             <div class="role-box">
-                <i class="ri-pencil-ruler-line"></i>
-                <h3> Wireframe Designer </h3>
-                <p>Andrew henry</p>
-                <a href="" class="s-btnn">GITHUB</a>
+                <div class="role-icon-wrap"><i class="ri-pencil-ruler-line"></i></div>
+                <h3>Andrew Henry</h3>
+                <span class="role-title">Wireframe Designer</span>
+                <span class="s-btnn disabled">
+                    <i class="ri-github-line"></i> GitHub
+                </span>
             </div>
 
             <div class="role-box">
-                <i class="ri-slideshow-line"></i>
-                <h3> Content creator </h3>
-                <p>Carlos Giron</p>
-                <a href="" class="s-btnn">GITHUB</a>
+                <div class="role-icon-wrap"><i class="ri-slideshow-line"></i></div>
+                <h3>Carlos Giron</h3>
+                <span class="role-title">Content Creator</span>
+                <span class="s-btnn disabled">
+                    <i class="ri-github-line"></i> GitHub
+                </span>
             </div>
-
-
         </div>
     </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="index.html" class="logo"><span>ECO</span>Travel</a>
+                <p>Sustainable travel starts with a single step. Know your impact before you move.</p>
+            </div>
+            <nav class="footer-links">
+                <a href="#home">Home</a>
+                <a href="mission/mission.html">Our Mission</a>
+                <a href="#about">About Us</a>
+                <a href="maps/maps.html">Calculator</a>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 EcoTravel &mdash; A student project.
+        </div>
+    </footer>
 
 </body>
 </html>
